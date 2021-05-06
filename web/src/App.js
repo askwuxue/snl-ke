@@ -1,3 +1,5 @@
+import React from "react";
+import ReactDOMServer from "react-dom/server";
 import logo from './logo.svg';
 import './App.css';
 
@@ -23,3 +25,8 @@ function App() {
 }
 
 export default App;
+
+// TODO jsx会被webpack。babel编译。之后的结果是JS，然后从此处，导出，Node拿到的就是js，不用进行处理
+export function render() {
+  return ReactDOMServer.renderToString(<App />)  
+}
