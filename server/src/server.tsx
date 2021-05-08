@@ -1,23 +1,27 @@
-// TODO ts的引入模块方式 不是commonjs
 import Koa from 'koa';
 import Router from '@koa/router';
-// TODO 服务端渲染tsx
-import React from 'react';
-import ReactDOMServer from 'react-dom/server';
-
-// TODO webpack 配置alias配置编译环境的@  tsconfig.json 配置编辑器环境paths。写法是 "@/*": ["xxx/*"]
-import App from '@/App';
+// TODO mysql不支持异步操作，使用的是回调函数的方式。所以使用mysql/promise
+import mysql from  'mysql2/promise';
 
 const app = new Koa();
-const router = new Router();
+const port = 8080;
 
-router.get('/', async ctx => {
-    // TODO 如果想要使用<APP /> 文件名后缀名必须是.tsx
-    ctx.body = ReactDOMServer.renderToString(<App/>);
+app.use( async ctx => {
+    const conn = await mysql.createConnection({
+        host: 'localhost',
+        port: 3306,
+        user: 'root',
+        password: 'root',
+        database: 'snl'
+    });
+    // TODO mysql查询到的数组中，数据是rows, files是连接相关的信息。
+    const result = await conn.query('SELECT * from banner_table;');
+    const [rows, fields] = result;
+    console.log('rows: ', rows);
+    ctx.body = rows;
 })
 
-app.use(router.routes());
-
-app.listen(8000, () => {
-    console.log('server started at port 8000...');
+app.listen(port, () => {
+    console.log(`server started at port ${port}`);
 })
+
