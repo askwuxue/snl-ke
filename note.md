@@ -202,4 +202,4 @@ createPoolCluster() 集群
      - client.set('key', 'value', callback)
      - client.get(key, callback)
 
-2.
+2.models 数据库和 Redis 数据类型控制
