@@ -187,4 +187,19 @@ createPoolCluster() 集群
 
 1. 数据库 libs folder
    - export 导出函数，promise
+2. 拆分配置文件
+
+### Redis
+
+1. 适合简单查询，key-value 键值对
+
+   - 数据库支持复杂查询。性能相较于 NoSQL 较差
+   - 安装 Redis
+     - const client = redis.createClient({
+       host: 'localhost',
+       port: 6379,
+       });
+     - client.set('key', 'value', callback)
+     - client.get(key, callback)
+
 2.
