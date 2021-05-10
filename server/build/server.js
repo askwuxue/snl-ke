@@ -20,13 +20,53 @@ return /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./configs/db.ts":
+/*!***********************!*\
+  !*** ./configs/db.ts ***!
+  \***********************/
+/***/ ((__unused_webpack_module, exports) => {
+
+eval("\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nexports.db = void 0;\r\nexports.db = {\r\n    host: 'localhost',\r\n    port: 3306,\r\n    user: 'root',\r\n    password: 'root',\r\n    database: 'snl'\r\n};\r\n\n\n//# sourceURL=webpack://server/./configs/db.ts?");
+
+/***/ }),
+
+/***/ "./configs/server.ts":
+/*!***************************!*\
+  !*** ./configs/server.ts ***!
+  \***************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+eval("\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nexports.default = {\r\n    port: 8080\r\n};\r\n\n\n//# sourceURL=webpack://server/./configs/server.ts?");
+
+/***/ }),
+
+/***/ "./libs/database.ts":
+/*!**************************!*\
+  !*** ./libs/database.ts ***!
+  \**************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\n// TODO mysql不支持异步操作，使用的是回调函数的方式。所以使用mysql/promise\r\nconst promise_1 = __importDefault(__webpack_require__(/*! mysql2/promise */ \"mysql2/promise\"));\r\n// 导入DB配置\r\nconst db_1 = __webpack_require__(/*! ../configs/db */ \"./configs/db.ts\");\r\n// TODO 创建连接池\r\nexports.default = promise_1.default.createPool(db_1.db);\r\n\n\n//# sourceURL=webpack://server/./libs/database.ts?");
+
+/***/ }),
+
+/***/ "./libs/server.ts":
+/*!************************!*\
+  !*** ./libs/server.ts ***!
+  \************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nconst koa_1 = __importDefault(__webpack_require__(/*! koa */ \"koa\"));\r\nconst server_1 = __importDefault(__webpack_require__(/*! ../configs/server */ \"./configs/server.ts\"));\r\nconst app = new koa_1.default();\r\nconst { port } = server_1.default;\r\napp.listen(port, () => {\r\n    console.log(`server started at port ${port}`);\r\n});\r\nexports.default = app;\r\n\n\n//# sourceURL=webpack://server/./libs/server.ts?");
+
+/***/ }),
+
 /***/ "./src/server.tsx":
 /*!************************!*\
   !*** ./src/server.tsx ***!
   \************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
-eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nconst koa_1 = __importDefault(__webpack_require__(/*! koa */ \"koa\"));\r\n// TODO mysql不支持异步操作，使用的是回调函数的方式。所以使用mysql/promise\r\nconst promise_1 = __importDefault(__webpack_require__(/*! mysql2/promise */ \"mysql2/promise\"));\r\nconst app = new koa_1.default();\r\nconst port = 8080;\r\napp.use(async (ctx) => {\r\n    const conn = await promise_1.default.createConnection({\r\n        host: 'localhost',\r\n        port: 3306,\r\n        user: 'root',\r\n        password: 'root',\r\n        database: 'snl'\r\n    });\r\n    // TODO mysql查询到的数组中，数据是rows, files是连接相关的信息。\r\n    const result = await conn.query('SELECT * from banner_table;');\r\n    const [rows, fields] = result;\r\n    console.log('rows: ', rows);\r\n    ctx.body = rows;\r\n});\r\napp.listen(port, () => {\r\n    console.log(`server started at port ${port}`);\r\n});\r\n\n\n//# sourceURL=webpack://server/./src/server.tsx?");
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nconst database_1 = __importDefault(__webpack_require__(/*! ../libs/database */ \"./libs/database.ts\"));\r\nconst server_1 = __importDefault(__webpack_require__(/*! ../libs/server */ \"./libs/server.ts\"));\r\nserver_1.default.use(async (ctx) => {\r\n    // TODO mysql查询到的数组中，数据是rows, files是连接相关的信息。\r\n    const result = await database_1.default.query('SELECT * from banner_table;');\r\n    const [rows, fields] = result;\r\n    // console.log('rows: ', rows); \r\n    ctx.body = rows;\r\n});\r\n\n\n//# sourceURL=webpack://server/./src/server.tsx?");
 
 /***/ }),
 
