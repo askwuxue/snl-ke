@@ -203,3 +203,16 @@ createPoolCluster() 集群
      - client.get(key, callback)
 
 2.models 数据库和 Redis 数据类型控制
+
+#### 项目
+
+1. 前台，后台混合渲染
+2. 模块化
+3. typescript
+
+##### 路由配置
+
+yarn add koa-static
+ts static 是一个关键字
+
+style-loader css-loader 对 css 处理
