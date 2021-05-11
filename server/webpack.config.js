@@ -20,7 +20,21 @@ module.exports = {
                 loader: 'ts-loader'
             },
             {
-                test: /\.(svg|png|gpg|css)$/,
+                test: /\.html$/,
+                use: [
+                    'html-loader'
+                ]
+            },
+            {   
+                // TODO 对css进行处理，使用file-loader是无法处理css的。只是对所有文件的一个简单处理
+                test: /\.css$/,
+                use: [
+                    'css-loader'
+                ]
+            },
+            {
+                // test: /\.(svg|png|gpg|css)$/,
+                test: /\.(svg|png|gpg)$/,
                 loader: 'file-loader'
             }
         ]
