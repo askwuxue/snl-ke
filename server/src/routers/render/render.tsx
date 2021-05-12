@@ -11,7 +11,7 @@ const { staticRoot } = serverConf;
 const mode = process.env.NODE_ENV;
 
 router.get('/', async ctx => {
-    // TODO 生产环境开启SSR。 除了这种方式使用import()动态加载也可以 
+    // TODO 生产环境开启SSR
     if (mode === 'production') {
         const indexHtml = fs.readFileSync(`${staticRoot}/index.html`).toString();
         // ReactDOMServer.renderToString(<App />) 将组建转成了普通的html,js代码
