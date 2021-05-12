@@ -216,3 +216,46 @@ yarn add koa-static
 ts static 是一个关键字
 
 style-loader css-loader 对 css 处理
+
+#### 关于 nodeJS 的路径问题
+
+nodeJS 执行是根据当前命令的执行地址确定的。
+path.resolve(\_\_dirname, path);
+对路径进行配置 静态资源
+
+#### API
+
+对路由进行配置 路由主文件 路由文件
+将 server 抽离到 routers
+
+#### 环境配置
+
+工作在 webpack 下的 Node 有变量`process.env.NODE_ENV` 取值为 webpack 中的 mode
+
+服务算渲染根据环境进行渲染。开发阶段不执行
+
+##### 启动命令配置
+
+先进行一次 build，后面并行命令执行不会报错
+
+```js
+"start": "yarn build-env & npm-run-all --parallel build-watch nodemon",
+```
+
+##### 跨域
+
+1. http-proxy-middleware 使用
+
+2. cors
+
+- 简单请求
+  - get、没有自定义头。就是自定义请求。
+- 复杂请求 返回三个头给浏览器才可以跨域
+
+  1.  method: options
+      不允许
+
+      允许
+      返回三个头给浏览器才可以跨域
+
+  2.  真正的请求。
