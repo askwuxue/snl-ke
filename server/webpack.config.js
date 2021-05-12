@@ -2,7 +2,7 @@ const path = require('path');
 // TODO 解决node系统模块无法编译的问题
 const webpackNodeExternals = require('webpack-node-externals');
 module.exports = {
-    entry: './src/server.tsx',
+    entry: './src/server.ts',
     output: {
         path: path.resolve(__dirname, 'build'),
         filename: 'server.js',
@@ -43,7 +43,8 @@ module.exports = {
         // TODO 要求webpack找不到拓展名按照下面的规则去找
         extensions: ['.ts', '.tsx', '.js', '.jsx'],
         alias: {
-            "@": path.resolve(__dirname, "../web/src")
+            "@": path.resolve(__dirname, "../web/src"),
+            "~": path.resolve(__dirname, "src/configs")
         }
     }
 }
