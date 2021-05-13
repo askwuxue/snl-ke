@@ -4,6 +4,9 @@ import { getAllBanners } from '../../../models/banner';
 const router = new Router();
 
 router.get('/course', async ctx => {
+    ctx.set({
+        'Access-Control-Allow-Origin': '*'
+    })
     ctx.body = await getAllBanners();
 })
 
