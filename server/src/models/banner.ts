@@ -1,10 +1,5 @@
 import database from '../libs/database';
-export interface BannerData {
-    ID: number,
-    img: string,
-    href: string,
-    sort: number
-}
+import { BannerData } from '@/models/banners';
 
 // 返回的是Promise类型的BannerData数组
 export async function getAllBanners(): Promise<BannerData[]> {
