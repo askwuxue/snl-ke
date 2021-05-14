@@ -1,12 +1,16 @@
 import Router from '@koa/router';
 import { getAllBanners } from '../../../models/banner';
+import http from '~/http';
 
 const router = new Router();
 
 router.get('/course', async ctx => {
-    ctx.set({
-        'Access-Control-Allow-Origin': '*'
-    })
+    ctx.set(http.simple);
+    ctx.body = await getAllBanners();
+})
+
+router.post('/course', async ctx => {
+    ctx.set(http.simple);
     ctx.body = await getAllBanners();
 })
 
