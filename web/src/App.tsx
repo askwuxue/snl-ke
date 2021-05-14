@@ -1,19 +1,26 @@
-import React from 'react';
-import axios from 'axios';
-import './App.css';
+import React, {useState, useEffect} from "react";
+import { getAllBanners, BannerData } from '@/models/banners';
+import "./App.css";
 
 function App() {
-  axios({
-        method: 'get',
-        url: 'http://localhost:8000/api/course',
-    })
-    .then(data => {
-      console.log(data);
-    })
-  return (
-    <div className="App">
-    </div>
-  );
+
+  const [data, setData] = useState<BannerData[]>([]);
+  useEffect(() => {
+    (async () => {
+      let res = await getAllBanners();
+      setData(res);
+    })()
+  }, [])
+
+ 
+  return <div className="App">
+    aaa
+    {
+      data.map(item => {
+        return <p key={item.ID}>{item.href}</p>
+      })
+    }
+  </div>;
 }
 
 export default App;
