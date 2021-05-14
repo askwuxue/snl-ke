@@ -259,3 +259,32 @@ path.resolve(\_\_dirname, path);
       返回三个头给浏览器才可以跨域
 
   2.  真正的请求。
+
+  #### craco 对 cra 进行配置 cra 中 webpack 的替代配置
+
+  yarn add craco
+  package 中的 script-react 替换成 craco
+
+yarn craco-alias
+
+craco.config.js 配置文件
+
+```js
+const CracoAlias = require(craco.alias);
+const path = require("path");
+
+module.exports = {
+  plugins: [
+    {
+      plugin: CrecoAlias,
+      options: {
+        aliases: {
+           'models': path.resolve(__dianame, xxxx);
+        },
+      },
+    },
+  ],
+};
+
+cra 创建的目录 默认不允许引入src之外的文件
+```
