@@ -19,11 +19,13 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    
     "paths": {
-      "@/**/*": [
-        "./src/**/*"
+      "@/*": [
+        "./src/models/*"
       ]
-    },
-  }
+    },  
+  },
+  "include": [
+    "src"
+  ]
 }
