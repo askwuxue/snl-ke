@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { getAllBanners, BannerData } from '@/models/banners';
+import { getAllBanners, BannerData } from './models/banners';
 import "./App.css";
 
 function App() {
