@@ -6,8 +6,8 @@ module.exports = {
         {
             plugin: cracoALias,
             options: {
-                alias: {
-                     '@': path.resolve(__dirname, 'src')
+                aliases: {
+                     '@': path.resolve(__dirname, 'src/models')
                 }
             }
         }
