@@ -288,3 +288,7 @@ module.exports = {
 
 cra 创建的目录 默认不允许引入src之外的文件
 ```
+
+### 项目开发
+
+1. craco-less 安装处理 css
