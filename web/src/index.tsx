@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './assets/css/index.less';
 import './assets/css/base.less';
+import './assets/css/common.less'
 
 ReactDOM.render(
   <React.StrictMode>
