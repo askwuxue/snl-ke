@@ -1,11 +1,13 @@
 // import React, {useState, useEffect} from "react";
 // import { getAllBanners, BannerData } from './models/banners';
-import Login from './components/login';
+// import Login from './components/login';
+import Header from './components/header/header';
 import "./App.css";
 
 function App() {
 
-  return <Login></Login>
+  // return <Login></Login>
+  return <Header />
 
   // const [data, setData] = useState<BannerData[]>([]);
   // useEffect(() => {
