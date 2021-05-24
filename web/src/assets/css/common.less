@@ -16,6 +16,7 @@
       width:144px;height:80px;
       background:url(../image/logo.png) no-repeat center;
       background-size: 100%;
+      text-indent: -9999px;
     }
 
     .category {
@@ -81,6 +82,8 @@
               width:837px;
               box-shadow:0 0 8px #CCC;
               padding-left:30px;
+              // TODO 撑大二级菜单的面积，无论项目多少
+              min-height: 100%;
 
               .sub-list-ul {
                 .sub-list-li {
@@ -187,6 +190,7 @@
 
     .btn {
       height:80px;line-height:80px;
+      cursor: pointer;
     }
 
     .user{
