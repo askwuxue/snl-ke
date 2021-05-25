@@ -1,3 +1,4 @@
+import React from 'react';
 import Category from './category';
 import SearchBar from './searchbar';
 import Users from './users';
