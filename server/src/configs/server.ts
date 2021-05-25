@@ -4,5 +4,6 @@ const staticRoot = path.resolve(__dirname);
 export default {
     serverPort:8000,
     // 静态文件路径
-    staticRoot: staticRoot
+    staticRoot: staticRoot,
+    enableCatch: true,
 }
