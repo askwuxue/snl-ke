@@ -11,9 +11,10 @@ import App from '@/App';
 const app = new Koa();
 const router = new Router();
 
+
 router.get('/', async ctx => {
     // TODO 如果想要使用<APP /> 文件名后缀名必须是.tsx
-    ctx.body = ReactDOMServer.renderToString(<App/>);
+    // ctx.body = ReactDOMServer.renderToString(<App />);
 })
 
 app.use(router.routes());
