@@ -1,34 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import CategoryData, { getCategories } from '../../models/category';
+import React from 'react';
 import Category from './category';
 import SearchBar from './searchbar';
 import Users from './users';
 interface Props {
-    categories: CategoryData[];
 }
 
 export default function Header(props: Props) {
-    const [categories, setCategories] = useState(props.categories);
-    // TODO如果不存在props.categories，请求接口取数据
-    useEffect(() => {
-        if (!categories) {
-            // model得到的是以Promise类型的数据
-            getCategories().then(data => {
-                setCategories(data);
-            })
-        }
-    }, [categories])
+    
     return (
         <div className="g-header">
             <div className="page">
                 <div className="left">
                 <Logo />
-                {/* 首次渲染结果会是一个undefined */}
-                {
-                    categories ? (
-                        <Category categories={categories}/>
-                    ) : ''
-                }
+                <Category/>
                 <SearchBar />
                 </div>
                 <div className="right">
