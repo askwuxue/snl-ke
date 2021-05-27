@@ -6,13 +6,7 @@ import apiRouter from './routers/api/api';
 import serverConf from '~/server';
 import http from '~/http';
 
-import { getCategory } from './models/category';
-
 const { staticRoot } = serverConf;
-
-getCategory().then(data => {
-    console.log(JSON.stringify(data));
-})
  
 app.use(async (ctx, next) => {
     // TODO 对于复杂请求的首次OPTION请求，必须返回一个OK的结果，后续的请求才可以继续发送。
