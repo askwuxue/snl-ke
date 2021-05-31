@@ -1,7 +1,7 @@
 import { RowDataPacket } from 'mysql2';
 import db from '../libs/database';
 import { SearchData } from '@/models/search';
-import { maxHotKeyWords, maxSuggestKeyWords } from '../configs/server';
+import { maxSuggestKeyWords } from '../configs/server';
 
 // TODO只有async函数才可以返回Promise对象
 // export async function getHost(): Promise<SearchData> {
