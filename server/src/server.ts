@@ -5,6 +5,7 @@ import renderRouter from './routers/render/render';
 import apiRouter from './routers/api/api';
 import serverConf from '~/server';
 import http from '~/http';
+import { getSuggestion } from './models/search';
 
 const { staticRoot } = serverConf;
  
@@ -21,6 +22,11 @@ app.use(async (ctx, next) => {
 
 app.use(renderRouter);
 app.use(apiRouter);
+
+// 检索关键字
+getSuggestion('j').then(res => {
+    console.log(res)
+})
 
 // TODO 对静态资源进行处理 
 app.use(KoaStatic(staticRoot));
