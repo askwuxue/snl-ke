@@ -6,7 +6,7 @@ interface Props {
 }
 export default function Category(props: Props) {
     // 数据的来源可能是models前端开始渲染之后存在models中的,或者是window对象中,也就是后端渲染来的数据
-    const [categories, setCategories] = useState<CategoryData[]>(appData.categories || (window as any | undefined).categories);
+    const [categories, setCategories] = useState<CategoryData[] | undefined>(appData?.categories);
     
     useEffect(() => {
         // TODO如果不存在props.categories，请求接口取数据
