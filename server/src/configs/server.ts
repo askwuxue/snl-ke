@@ -7,3 +7,6 @@ export default {
     staticRoot: staticRoot,
     enableCatch: true,
 }
+
+export const maxHotKeyWords = 5;
+export const maxSuggestKeyWords = 10;
