@@ -14,7 +14,9 @@ export function setAppData(data: AppData) {
 
 // 定义导出的数据格式,如果浏览器环境，才使用window上的属性，不是浏览器环境默认为undefined
 export let appData: AppData;
-if (typeof window !== undefined) {
+
+// 注意undefined字符串 
+if (typeof window !== 'undefined') {
     appData = (window as any).appData;
     console.log('appData: ', appData);
 } else {
