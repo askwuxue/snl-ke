@@ -6,6 +6,7 @@ import App from '@/App';
 import fs from 'fs';
 import serverConf from '~/server';
 import { getCategory } from '../../models/category';
+import { getSuggestion } from '../../models/search';
 
 const router = new Router();
 const { staticRoot } = serverConf; 
@@ -13,8 +14,10 @@ const mode = process.env.NODE_ENV;
 
 router.get('/', async ctx => {
     let categories = await getCategory();
+    let searchData = await getSuggestion('');
     let appData = {
-        categories
+        categories,
+        searchData,
     }
     // TODO 生产环境开启SSR
     if (mode === 'production') {
@@ -25,7 +28,7 @@ router.get('/', async ctx => {
         // 后端配置webpack对样式等资源的处理因为引入了一个前端的组件，这个组件中使用了资源。
         const res = indexHtml.replace('<div id="root"></div>',
             `<script>
-                window.categories = ${JSON.stringify(categories)}
+                window.appData = ${JSON.stringify(appData)}
             </script>
             <div id="root">${app}</div>`
         );
