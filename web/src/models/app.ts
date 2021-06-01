@@ -1,10 +1,12 @@
 import CategoryData from '../models/category';
 import { SearchData } from '../models/search';
+import { BannerData } from '../models/banners';
 
 // 定义数据格式
 export interface AppData {
-    categories: CategoryData[] | undefined;
-    searchData: SearchData | undefined
+    categories?: CategoryData[];
+    searchData?: SearchData
+    banners?: BannerData[]
 }
 
 // 对数据进行修改保存
@@ -21,6 +23,7 @@ if (typeof window !== 'undefined') {
 } else {
     appData = {
         categories: undefined,
-        searchData: undefined
+        searchData: undefined,
+        banners: undefined,
     }
 }
