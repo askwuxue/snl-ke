@@ -18,7 +18,6 @@ export let appData: AppData;
 // 注意undefined字符串 
 if (typeof window !== 'undefined') {
     appData = (window as any).appData;
-    console.log('appData: ', appData);
 } else {
     appData = {
         categories: undefined,
