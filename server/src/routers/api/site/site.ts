@@ -2,6 +2,7 @@ import Router from '@koa/router';
 import { getCategory } from '../../../models/category';
 import http from '~/http';
 import { getSuggestion } from '../../../models/search';
+import { getAllBanners } from '../../../models/banner'
 
 const router = new Router();
 router.prefix('/site');
@@ -23,6 +24,12 @@ router.get('/suggest/:kw', async ctx => {
     let kw: string = ctx.params.kw;
     ctx.set(http.simple);
     ctx.body = await getSuggestion(kw)
+})
+
+// 获取首页banner信息
+router.get('/banners', async ctx => {
+    ctx.set(http.simple);
+    ctx.body = await getAllBanners();
 })
 
 // 将路由的routes导出作为一个中间件使用
