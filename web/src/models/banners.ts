@@ -1,15 +1,15 @@
 import axios from 'axios';
 export interface BannerData {
   ID: number,
-  img: string,
+  src: string,
   href: string,
-  sort: number
 }
 
+// 请求banner数据
 export async function getAllBanners(): Promise<BannerData[]> {
     let { data } = await axios({
-        method: "POST",
-        url: "http://localhost:8000/api/course",
+        method: "GET",
+        url: "http://localhost:8000/api/site/banners",
         headers: {
           'Accept': 'text/plain',
           'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8',
@@ -17,6 +17,5 @@ export async function getAllBanners(): Promise<BannerData[]> {
           'X-Custom-Header': 'test'
         }
     });
-    
     return data;
 }
