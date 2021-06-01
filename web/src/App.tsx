@@ -1,5 +1,6 @@
 import React from "react";
 import Header from './components/header/header';
+import Banner from './components/index/banner';
 import "./App.css";
 import { AppData, setAppData } from "./models/app";
 
@@ -13,7 +14,10 @@ function App(props: Props) {
   // 如果接收到props，设置到models中。前端项目开始的组件是index。index不会传递props到当前组件
   props.appData && setAppData(props.appData)
   return (
-     <Header/>
+    <>
+      <Header/>
+      <Banner/>
+    </>
   )
 }
 
