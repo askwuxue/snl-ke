@@ -173,9 +173,6 @@
 .g-header .left .searchbar .list ul li:hover {
   background: #EEE;
 }
-.g-header .left .searchbar:hover .list {
-  display: block;
-}
 .g-header .right .btn,
 .g-header .right .user {
   float: left;
