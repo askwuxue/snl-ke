@@ -1,7 +1,7 @@
 .banner {
   height:300px;
   background:#020b1f;
-
+  transition: .5s all ease;
   .content {
     float:left;
     width:930px;
@@ -25,24 +25,36 @@
       &.btn-prev {left:20px;}
       &.btn-next {right:20px;}
 
-      .icon {width:32px;height:32px;margin-top:9px;}
+      .icon {
+        width:32px;
+        height:32px;
+        margin-top:9px;
+      }
     }
     
     .banner-list {
       position: relative;
       margin-left:110px;
-      width:710px;height:300px;
+      width:710px;
+      height:300px;
 
       li {
         position: absolute;
-        left:0;top:0;
-        display:none;
+        left:0;
+        top:0;
+        // TODO 设置渐变效果的transition才会生效
+        opacity: 0;
+        width:710px;
+        height:300px;
+        transition: 1s all ease;
+        img {
+          width:100%;
+          height:100%;
+        }
 
-        width:710px;height:300px;
-
-        img {width:100%;height:100%;}
-
-        &.active {display:block;}
+        &.active {
+         opacity: 1;
+        }
       }
     }
 
@@ -56,13 +68,16 @@
 
       li {
         display: inline-block;
-        width:40px;height:30px;
+        width:40px;
+        height:30px;
         margin:0 4px;
         cursor: pointer;
 
         &::before {
-          content:'';display:block;
-          width:100%;height:4px;
+          content:'';
+          display:block;
+          width:100%;
+          height:4px;
           background:grey;
           opacity:.3;
         }
@@ -75,7 +90,8 @@
   }
   .user {
     float:right;
-    width:220px;height:260px;
+    width:220px;
+    height:260px;
     margin-top:20px;
 
     border-radius:2px;
@@ -83,7 +99,8 @@
     background:#FFF;
 
     .no-user {
-      width:220px;height:200px;
+      width:220px;
+      height:200px;
       padding:21px 0 15px;
 
       .title {
@@ -93,7 +110,8 @@
       }
       .img {
         margin:10px auto 0;
-        width:170px;height:130px;
+        width:170px;
+        height:130px;
         background:url(../image/index-sprite3.png) no-repeat -144px -370px;
       }
     }
@@ -101,7 +119,8 @@
       .btn-login {
         display: block;
         margin:0 auto;
-        width:200px;height:50px;
+        width:200px;
+        height:50px;
         line-height:50px;
         text-align:center;
         cursor: pointer;
